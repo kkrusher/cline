@@ -1,4 +1,4 @@
-import { useExtensionState } from "@/context/ExtensionStateContext"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
 import { useFeatureFlagPayload } from "posthog-js/react"
 
 export const useFeatureFlag = (flagName: string): boolean => {

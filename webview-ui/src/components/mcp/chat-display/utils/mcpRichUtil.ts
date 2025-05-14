@@ -1,4 +1,4 @@
-import { WebServiceClient } from "@/services/grpc-client"
+import { WebServiceClient } from "@webview-ui/services/grpc-client"
 
 // Safely create a URL object with error handling and ensure HTTPS
 export const safeCreateUrl = (url: string): URL | null => {

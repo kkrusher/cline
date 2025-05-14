@@ -1,7 +1,7 @@
-import React, { useState } from "react"
 import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { vscode } from "@/utils/vscode"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { vscode } from "@webview-ui/utils/vscode"
+import React, { useState } from "react"
 
 export const TerminalSettingsSection: React.FC = () => {
 	const { shellIntegrationTimeout, setShellIntegrationTimeout } = useExtensionState()

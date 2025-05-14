@@ -1,15 +1,15 @@
+import { ExtensionMessage } from "@shared/ExtensionMessage"
 import { useCallback, useEffect, useState } from "react"
 import { useEvent } from "react-use"
-import { ExtensionMessage } from "@shared/ExtensionMessage"
+import AccountView from "./components/account/AccountView"
 import ChatView from "./components/chat/ChatView"
 import HistoryView from "./components/history/HistoryView"
+import McpView from "./components/mcp/configuration/McpConfigurationView"
 import SettingsView from "./components/settings/SettingsView"
 import WelcomeView from "./components/welcome/WelcomeView"
-import AccountView from "./components/account/AccountView"
 import { useExtensionState } from "./context/ExtensionStateContext"
-import { vscode } from "./utils/vscode"
-import McpView from "./components/mcp/configuration/McpConfigurationView"
 import { Providers } from "./Providers"
+import { vscode } from "./utils/vscode"
 
 const AppContent = () => {
 	const { didHydrateState, showWelcome, shouldShowAnnouncement, showMcp, mcpTab } = useExtensionState()

@@ -1,8 +1,8 @@
+import { TelemetrySetting } from "@shared/TelemetrySetting"
 import { VSCodeButton, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
+import { vscode } from "@webview-ui/utils/vscode"
 import { memo, useState } from "react"
 import styled from "styled-components"
-import { vscode } from "@/utils/vscode"
-import { TelemetrySetting } from "@shared/TelemetrySetting"
 
 const BannerContainer = styled.div`
 	background-color: var(--vscode-banner-background);

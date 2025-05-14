@@ -1,19 +1,19 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import assert from "node:assert"
 import { setTimeout as setTimeoutPromise } from "node:timers/promises"
-import pWaitFor from "p-wait-for"
 import * as vscode from "vscode"
-import { Controller } from "./core/controller"
-import { WebviewProvider } from "./core/webview"
-import { createClineAPI } from "./exports"
-import { DIFF_VIEW_URI_SCHEME } from "./integrations/editor/DiffViewProvider"
-import { ErrorService } from "./services/error/ErrorService"
+import pWaitFor from "p-wait-for"
 import { Logger } from "./services/logging/Logger"
-import { posthogClientProvider } from "./services/posthog/PostHogClientProvider"
-import { telemetryService } from "./services/posthog/telemetry/TelemetryService"
-import { cleanupTestMode, initializeTestMode } from "./services/test/TestMode"
+import { createClineAPI } from "./exports"
 import "./utils/path" // necessary to have access to String.prototype.toPosix
+import { DIFF_VIEW_URI_SCHEME } from "./integrations/editor/DiffViewProvider"
+import assert from "node:assert"
+import { posthogClientProvider } from "./services/posthog/PostHogClientProvider"
+import { WebviewProvider } from "./core/webview"
+import { Controller } from "./core/controller"
+import { ErrorService } from "./services/error/ErrorService"
+import { initializeTestMode, cleanupTestMode } from "./services/test/TestMode"
+import { telemetryService } from "./services/posthog/telemetry/TelemetryService"
 
 /*
 Built using https://github.com/microsoft/vscode-webview-ui-toolkit
@@ -192,54 +192,54 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(DIFF_VIEW_URI_SCHEME, diffContentProvider))
 
 	// URI Handler
-	// const handleUri = async (uri: vscode.Uri) => {
-	// 	console.log("URI Handler called with:", {
-	// 		path: uri.path,
-	// 		query: uri.query,
-	// 		scheme: uri.scheme,
-	// 	})
+	const handleUri = async (uri: vscode.Uri) => {
+		console.log("URI Handler called with:", {
+			path: uri.path,
+			query: uri.query,
+			scheme: uri.scheme,
+		})
 
-	// 	const path = uri.path
-	// 	const query = new URLSearchParams(uri.query.replace(/\+/g, "%2B"))
-	// 	const visibleWebview = WebviewProvider.getVisibleInstance()
-	// 	if (!visibleWebview) {
-	// 		return
-	// 	}
-	// 	switch (path) {
-	// 		case "/openrouter": {
-	// 			const code = query.get("code")
-	// 			if (code) {
-	// 				await visibleWebview?.controller.handleOpenRouterCallback(code)
-	// 			}
-	// 			break
-	// 		}
-	// 		case "/auth": {
-	// 			const token = query.get("token")
-	// 			const state = query.get("state")
-	// 			const apiKey = query.get("apiKey")
+		const path = uri.path
+		const query = new URLSearchParams(uri.query.replace(/\+/g, "%2B"))
+		const visibleWebview = WebviewProvider.getVisibleInstance()
+		if (!visibleWebview) {
+			return
+		}
+		switch (path) {
+			case "/openrouter": {
+				const code = query.get("code")
+				if (code) {
+					await visibleWebview?.controller.handleOpenRouterCallback(code)
+				}
+				break
+			}
+			case "/auth": {
+				const token = query.get("token")
+				const state = query.get("state")
+				const apiKey = query.get("apiKey")
 
-	// 			console.log("Auth callback received:", {
-	// 				token: token,
-	// 				state: state,
-	// 				apiKey: apiKey,
-	// 			})
+				console.log("Auth callback received:", {
+					token: token,
+					state: state,
+					apiKey: apiKey,
+				})
 
-	// 			// Validate state parameter
-	// 			if (!(await visibleWebview?.controller.validateAuthState(state))) {
-	// 				vscode.window.showErrorMessage("Invalid auth state")
-	// 				return
-	// 			}
+				// Validate state parameter
+				if (!(await visibleWebview?.controller.validateAuthState(state))) {
+					vscode.window.showErrorMessage("Invalid auth state")
+					return
+				}
 
-	// 			if (token && apiKey) {
-	// 				await visibleWebview?.controller.handleAuthCallback(token, apiKey)
-	// 			}
-	// 			break
-	// 		}
-	// 		default:
-	// 			break
-	// 	}
-	// }
-	// context.subscriptions.push(vscode.window.registerUriHandler({ handleUri }))
+				if (token && apiKey) {
+					await visibleWebview?.controller.handleAuthCallback(token, apiKey)
+				}
+				break
+			}
+			default:
+				break
+		}
+	}
+	context.subscriptions.push(vscode.window.registerUriHandler({ handleUri }))
 
 	// Register size testing commands in development mode
 	if (IS_DEV && IS_DEV === "true") {
@@ -444,7 +444,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}),
 	)
 
-	createClineAPI(outputChannel, sidebarWebview.controller)
+	return createClineAPI(outputChannel, sidebarWebview.controller)
 }
 
 // TODO: Find a solution for automatically removing DEV related content from production builds.

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useCallback } from "react"
-import LinkPreview from "./LinkPreview"
-import ImagePreview from "./ImagePreview"
+import ChatErrorBoundary from "@webview-ui/components/chat/ChatErrorBoundary"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import React, { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import ChatErrorBoundary from "@/components/chat/ChatErrorBoundary"
-import { isUrl, isLocalhostUrl, formatUrlForOpening, checkIfImageUrl } from "./utils/mcpRichUtil"
+import ImagePreview from "./ImagePreview"
+import LinkPreview from "./LinkPreview"
+import { checkIfImageUrl, formatUrlForOpening, isLocalhostUrl, isUrl } from "./utils/mcpRichUtil"
 
 // Maximum number of URLs to process in total, per response
 export const MAX_URLS = 50

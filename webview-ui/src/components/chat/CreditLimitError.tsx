@@ -1,8 +1,8 @@
-import React from "react"
-import VSCodeButtonLink from "@/components/common/VSCodeButtonLink"
-import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import { vscode } from "@/utils/vscode"
 import { Invoke } from "@shared/ExtensionMessage"
+import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import VSCodeButtonLink from "@webview-ui/components/common/VSCodeButtonLink"
+import { vscode } from "@webview-ui/utils/vscode"
+import React from "react"
 
 interface CreditLimitErrorProps {
 	currentBalance: number

@@ -1,13 +1,13 @@
-import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { useExtensionState } from "@/context/ExtensionStateContext"
 import { AutoApprovalSettings } from "@shared/AutoApprovalSettings"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import AutoApproveMenuItem from "./AutoApproveMenuItem"
-import { vscode } from "@/utils/vscode"
-import { getAsVar, VSC_FOREGROUND, VSC_TITLEBAR_INACTIVE_FOREGROUND, VSC_DESCRIPTION_FOREGROUND } from "@/utils/vscStyles"
+import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import HeroTooltip from "@webview-ui/components/common/HeroTooltip"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { vscode } from "@webview-ui/utils/vscode"
+import { getAsVar, VSC_FOREGROUND, VSC_TITLEBAR_INACTIVE_FOREGROUND } from "@webview-ui/utils/vscStyles"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useClickAway } from "react-use"
-import HeroTooltip from "@/components/common/HeroTooltip"
+import AutoApproveMenuItem from "./AutoApproveMenuItem"
 
 const breakpoint = 500
 

@@ -1,8 +1,8 @@
-import { useCallback, useState, useRef, useMemo } from "react"
-import styled from "styled-components"
 import { McpMarketplaceItem, McpServer } from "@shared/mcp"
-import { vscode } from "@/utils/vscode"
+import { vscode } from "@webview-ui/utils/vscode"
+import { useCallback, useMemo, useRef, useState } from "react"
 import { useEvent } from "react-use"
+import styled from "styled-components"
 
 interface McpMarketplaceCardProps {
 	item: McpMarketplaceItem

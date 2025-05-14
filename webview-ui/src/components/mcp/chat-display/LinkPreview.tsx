@@ -1,8 +1,8 @@
-import React from "react"
-import { vscode } from "@/utils/vscode"
+import ChatErrorBoundary from "@webview-ui/components/chat/ChatErrorBoundary"
+import { vscode } from "@webview-ui/utils/vscode"
 import DOMPurify from "dompurify"
+import React from "react"
 import { getSafeHostname, normalizeRelativeUrl } from "./utils/mcpRichUtil"
-import ChatErrorBoundary from "@/components/chat/ChatErrorBoundary"
 
 interface OpenGraphData {
 	title?: string

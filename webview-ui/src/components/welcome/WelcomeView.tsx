@@ -1,12 +1,12 @@
-import { VSCodeButton, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
-import { useEffect, useState, memo } from "react"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { validateApiConfiguration } from "@/utils/validate"
-import { vscode } from "@/utils/vscode"
-import ApiOptions from "@/components/settings/ApiOptions"
-import ClineLogoWhite from "@/assets/ClineLogoWhite"
-import { AccountServiceClient } from "@/services/grpc-client"
 import { EmptyRequest } from "@shared/proto/common"
+import { VSCodeButton, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
+import ClineLogoWhite from "@webview-ui/assets/ClineLogoWhite"
+import ApiOptions from "@webview-ui/components/settings/ApiOptions"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { AccountServiceClient } from "@webview-ui/services/grpc-client"
+import { validateApiConfiguration } from "@webview-ui/utils/validate"
+import { vscode } from "@webview-ui/utils/vscode"
+import { memo, useEffect, useState } from "react"
 
 const WelcomeView = memo(() => {
 	const { apiConfiguration } = useExtensionState()

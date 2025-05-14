@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react"
-import { useClickAway, useWindowSize } from "react-use"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import { vscode } from "@/utils/vscode"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import Tooltip from "@webview-ui/components/common/Tooltip"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { vscode } from "@webview-ui/utils/vscode"
+import React, { useEffect, useRef, useState } from "react"
+import { useClickAway, useWindowSize } from "react-use"
 import RulesToggleList from "./RulesToggleList"
-import Tooltip from "@/components/common/Tooltip"
 
 const ClineRulesToggleModal: React.FC = () => {
 	const {

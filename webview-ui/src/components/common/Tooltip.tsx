@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import styled from "styled-components"
 import {
 	getAsVar,
 	VSC_DESCRIPTION_FOREGROUND,
-	VSC_SIDEBAR_BACKGROUND,
-	VSC_INPUT_PLACEHOLDER_FOREGROUND,
 	VSC_INPUT_BORDER,
-} from "@/utils/vscStyles"
+	VSC_INPUT_PLACEHOLDER_FOREGROUND,
+	VSC_SIDEBAR_BACKGROUND,
+} from "@webview-ui/utils/vscStyles"
+import React, { useState } from "react"
+import styled from "styled-components"
 
 interface TooltipProps {
 	visible?: boolean

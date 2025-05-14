@@ -1,5 +1,5 @@
-import ClineLogoVariable from "@/assets/ClineLogoVariable"
-import HeroTooltip from "@/components/common/HeroTooltip"
+import ClineLogoVariable from "@webview-ui/assets/ClineLogoVariable"
+import HeroTooltip from "@webview-ui/components/common/HeroTooltip"
 
 const HomeHeader = () => {
 	return (

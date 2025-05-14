@@ -1,9 +1,9 @@
-import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import { useFirebaseAuth } from "@/context/FirebaseAuthContext"
-import { vscode } from "@/utils/vscode"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { AccountServiceClient } from "@/services/grpc-client"
 import { EmptyRequest } from "@shared/proto/common"
+import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { useFirebaseAuth } from "@webview-ui/context/FirebaseAuthContext"
+import { AccountServiceClient } from "@webview-ui/services/grpc-client"
+import { vscode } from "@webview-ui/utils/vscode"
 
 export const ClineAccountInfoCard = () => {
 	const { user: firebaseUser, handleSignOut } = useFirebaseAuth()

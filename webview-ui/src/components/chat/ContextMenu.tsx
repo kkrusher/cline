@@ -1,6 +1,11 @@
+import { cleanPathPrefix } from "@webview-ui/components/common/CodeAccordian"
+import {
+	ContextMenuOptionType,
+	ContextMenuQueryItem,
+	getContextMenuOptions,
+	SearchResult,
+} from "@webview-ui/utils/context-mentions"
 import React, { useEffect, useMemo, useRef, useState } from "react"
-import { ContextMenuOptionType, ContextMenuQueryItem, getContextMenuOptions, SearchResult } from "@/utils/context-mentions"
-import { cleanPathPrefix } from "@/components/common/CodeAccordian"
 
 interface ContextMenuProps {
 	onSelect: (type: ContextMenuOptionType, value?: string) => void

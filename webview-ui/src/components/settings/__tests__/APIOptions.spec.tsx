@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react"
-import { describe, it, expect, vi } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/react"
+import { ExtensionStateContextProvider } from "@webview-ui/context/ExtensionStateContext"
+import { describe, expect, it, vi } from "vitest"
 import ApiOptions from "../ApiOptions"
-import { ExtensionStateContextProvider } from "@/context/ExtensionStateContext"
 
 vi.mock("../../../context/ExtensionStateContext", async (importOriginal) => {
 	const actual = await importOriginal()

@@ -1,44 +1,44 @@
-import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import React, { forwardRef, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
-import DynamicTextArea from "react-textarea-autosize"
-import { useClickAway, useEvent, useWindowSize } from "react-use"
-import styled from "styled-components"
+import { ChatSettings } from "@shared/ChatSettings"
 import { mentionRegex, mentionRegexGlobal } from "@shared/context-mentions"
 import { ExtensionMessage } from "@shared/ExtensionMessage"
-import { useExtensionState } from "@/context/ExtensionStateContext"
+import { EmptyRequest } from "@shared/proto/common"
+import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { MAX_IMAGES_PER_MESSAGE } from "@webview-ui/components/chat/ChatView"
+import ContextMenu from "@webview-ui/components/chat/ContextMenu"
+import SlashCommandMenu from "@webview-ui/components/chat/SlashCommandMenu"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import Thumbnails from "@webview-ui/components/common/Thumbnails"
+import Tooltip from "@webview-ui/components/common/Tooltip"
+import ApiOptions, { normalizeApiConfiguration } from "@webview-ui/components/settings/ApiOptions"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { FileServiceClient, StateServiceClient } from "@webview-ui/services/grpc-client"
 import {
 	ContextMenuOptionType,
 	getContextMenuOptions,
 	insertMention,
 	insertMentionDirectly,
 	removeMention,
-	shouldShowContextMenu,
 	SearchResult,
-} from "@/utils/context-mentions"
+	shouldShowContextMenu,
+} from "@webview-ui/utils/context-mentions"
+import { useMetaKeyDetection, useShortcut } from "@webview-ui/utils/hooks"
 import {
-	SlashCommand,
-	slashCommandDeleteRegex,
-	shouldShowSlashCommandsMenu,
 	getMatchingSlashCommands,
 	insertSlashCommand,
 	removeSlashCommand,
+	shouldShowSlashCommandsMenu,
+	SlashCommand,
+	slashCommandDeleteRegex,
 	validateSlashCommand,
-} from "@/utils/slash-commands"
-import { useMetaKeyDetection, useShortcut } from "@/utils/hooks"
-import { validateApiConfiguration, validateModelId } from "@/utils/validate"
-import { vscode } from "@/utils/vscode"
-import { EmptyRequest } from "@shared/proto/common"
-import { FileServiceClient, StateServiceClient } from "@/services/grpc-client"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import Thumbnails from "@/components/common/Thumbnails"
-import Tooltip from "@/components/common/Tooltip"
-import ApiOptions, { normalizeApiConfiguration } from "@/components/settings/ApiOptions"
-import { MAX_IMAGES_PER_MESSAGE } from "@/components/chat/ChatView"
-import ContextMenu from "@/components/chat/ContextMenu"
-import SlashCommandMenu from "@/components/chat/SlashCommandMenu"
-import { ChatSettings } from "@shared/ChatSettings"
-import ServersToggleModal from "./ServersToggleModal"
+} from "@webview-ui/utils/slash-commands"
+import { validateApiConfiguration, validateModelId } from "@webview-ui/utils/validate"
+import { vscode } from "@webview-ui/utils/vscode"
+import React, { forwardRef, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import DynamicTextArea from "react-textarea-autosize"
+import { useClickAway, useEvent, useWindowSize } from "react-use"
+import styled from "styled-components"
 import ClineRulesToggleModal from "../cline-rules/ClineRulesToggleModal"
+import ServersToggleModal from "./ServersToggleModal"
 
 const getImageDimensions = (dataUrl: string): Promise<{ width: number; height: number }> => {
 	return new Promise((resolve, reject) => {

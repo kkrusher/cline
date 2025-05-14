@@ -1,7 +1,7 @@
-import { User, getAuth, signInWithCustomToken, signOut } from "firebase/auth"
+import { vscode } from "@webview-ui/utils/vscode"
 import { initializeApp } from "firebase/app"
+import { User, getAuth, signInWithCustomToken, signOut } from "firebase/auth"
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react"
-import { vscode } from "@/utils/vscode"
 
 // Firebase configuration from extension
 const firebaseConfig = {

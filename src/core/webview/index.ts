@@ -1,12 +1,12 @@
+import { Controller } from "@core/controller/index"
+import { getTheme } from "@integrations/theme/getTheme"
+import { findLast } from "@shared/array"
 import axios from "axios"
+import { readFile } from "fs/promises"
+import path from "node:path"
 import * as vscode from "vscode"
 import { getNonce } from "./getNonce"
 import { getUri } from "./getUri"
-import { getTheme } from "@integrations/theme/getTheme"
-import { Controller } from "@core/controller/index"
-import { findLast } from "@shared/array"
-import { readFile } from "fs/promises"
-import path from "node:path"
 
 /*
 https://github.com/microsoft/vscode-webview-ui-toolkit-samples/blob/main/default/weather-webview/src/providers/WeatherViewProvider.ts

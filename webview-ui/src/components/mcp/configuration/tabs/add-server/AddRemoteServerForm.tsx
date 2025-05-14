@@ -1,10 +1,10 @@
-import { useRef, useState } from "react"
-import { vscode } from "@/utils/vscode"
-import { VSCodeButton, VSCodeLink, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
-import { LINKS } from "@/constants"
-import { McpServiceClient } from "@/services/grpc-client"
 import { convertProtoMcpServersToMcpServers } from "@shared/proto-conversions/mcp/mcp-server-conversion"
-import { useExtensionState } from "@/context/ExtensionStateContext"
+import { VSCodeButton, VSCodeLink, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
+import { LINKS } from "@webview-ui/constants"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { McpServiceClient } from "@webview-ui/services/grpc-client"
+import { vscode } from "@webview-ui/utils/vscode"
+import { useState } from "react"
 
 const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) => {
 	const [serverName, setServerName] = useState("")

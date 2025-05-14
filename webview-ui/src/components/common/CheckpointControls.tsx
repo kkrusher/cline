@@ -1,12 +1,10 @@
+import { ExtensionMessage } from "@shared/ExtensionMessage"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import { CheckpointsServiceClient } from "@webview-ui/services/grpc-client"
 import { useCallback, useRef, useState } from "react"
 import { useClickAway, useEvent } from "react-use"
 import styled from "styled-components"
-import { ExtensionMessage } from "@shared/ExtensionMessage"
-import { CheckpointsServiceClient } from "@/services/grpc-client"
-import { vscode } from "@/utils/vscode"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import { ClineCheckpointRestore } from "@shared/WebviewMessage"
 
 interface CheckpointOverlayProps {
 	messageTs?: number

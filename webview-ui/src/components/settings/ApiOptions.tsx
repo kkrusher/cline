@@ -1,30 +1,25 @@
 import {
-	VSCodeButton,
-	VSCodeCheckbox,
-	VSCodeDropdown,
-	VSCodeLink,
-	VSCodeOption,
-	VSCodeRadio,
-	VSCodeRadioGroup,
-	VSCodeTextField,
-} from "@vscode/webview-ui-toolkit/react"
-import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import ThinkingBudgetSlider from "./ThinkingBudgetSlider"
-import { useEvent, useInterval } from "react-use"
-import styled from "styled-components"
-import * as vscodemodels from "vscode"
-import {
 	anthropicDefaultModelId,
 	anthropicModels,
 	ApiConfiguration,
 	ApiProvider,
+	askSageDefaultModelId,
+	askSageDefaultURL,
+	askSageModels,
 	azureOpenAiDefaultApiVersion,
 	bedrockDefaultModelId,
 	bedrockModels,
 	deepSeekDefaultModelId,
 	deepSeekModels,
+	doubaoDefaultModelId,
+	doubaoModels,
 	geminiDefaultModelId,
 	geminiModels,
+	internationalQwenDefaultModelId,
+	internationalQwenModels,
+	liteLlmModelInfoSaneDefaults,
+	mainlandQwenDefaultModelId,
+	mainlandQwenModels,
 	mistralDefaultModelId,
 	mistralModels,
 	ModelInfo,
@@ -35,33 +30,37 @@ import {
 	openRouterDefaultModelInfo,
 	requestyDefaultModelId,
 	requestyDefaultModelInfo,
-	mainlandQwenModels,
-	internationalQwenModels,
-	mainlandQwenDefaultModelId,
-	internationalQwenDefaultModelId,
+	sambanovaDefaultModelId,
+	sambanovaModels,
 	vertexDefaultModelId,
 	vertexModels,
-	askSageModels,
-	askSageDefaultModelId,
-	askSageDefaultURL,
 	xaiDefaultModelId,
 	xaiModels,
-	sambanovaModels,
-	sambanovaDefaultModelId,
-	doubaoModels,
-	doubaoDefaultModelId,
-	liteLlmModelInfoSaneDefaults,
 } from "@shared/api"
-import { ExtensionMessage } from "@shared/ExtensionMessage"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { vscode } from "@/utils/vscode"
-import { ModelsServiceClient } from "@/services/grpc-client"
-import { getAsVar, VSC_DESCRIPTION_FOREGROUND } from "@/utils/vscStyles"
-import VSCodeButtonLink from "@/components/common/VSCodeButtonLink"
-import OpenRouterModelPicker, { ModelDescriptionMarkdown, OPENROUTER_MODEL_PICKER_Z_INDEX } from "./OpenRouterModelPicker"
-import { ClineAccountInfoCard } from "./ClineAccountInfoCard"
-import RequestyModelPicker from "./RequestyModelPicker"
+import {
+	VSCodeButton,
+	VSCodeCheckbox,
+	VSCodeDropdown,
+	VSCodeLink,
+	VSCodeOption,
+	VSCodeRadio,
+	VSCodeRadioGroup,
+	VSCodeTextField,
+} from "@vscode/webview-ui-toolkit/react"
+import VSCodeButtonLink from "@webview-ui/components/common/VSCodeButtonLink"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { ModelsServiceClient } from "@webview-ui/services/grpc-client"
+import { vscode } from "@webview-ui/utils/vscode"
+import { getAsVar, VSC_DESCRIPTION_FOREGROUND } from "@webview-ui/utils/vscStyles"
+import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useInterval } from "react-use"
+import styled from "styled-components"
+import * as vscodemodels from "vscode"
 import { useOpenRouterKeyInfo } from "../ui/hooks/useOpenRouterKeyInfo"
+import { ClineAccountInfoCard } from "./ClineAccountInfoCard"
+import OpenRouterModelPicker, { ModelDescriptionMarkdown, OPENROUTER_MODEL_PICKER_Z_INDEX } from "./OpenRouterModelPicker"
+import RequestyModelPicker from "./RequestyModelPicker"
+import ThinkingBudgetSlider from "./ThinkingBudgetSlider"
 
 interface ApiOptionsProps {
 	showModelOptions: boolean

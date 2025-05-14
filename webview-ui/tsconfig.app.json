@@ -24,11 +24,8 @@
 		/* Aliasing */
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@components/*": ["src/components/*"],
-			"@context/*": ["src/context/*"],
-			"@shared/*": ["../src/shared/*"],
-			"@utils/*": ["src/utils/*"]
+			"@webview-ui/*": ["src/*"],
+			"@shared/*": ["../src/shared/*"]
 		}
 	},
 	"include": ["src"]

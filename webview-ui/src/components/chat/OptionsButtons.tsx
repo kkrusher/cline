@@ -1,6 +1,6 @@
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import { vscode } from "@webview-ui/utils/vscode"
 import styled from "styled-components"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import { vscode } from "@/utils/vscode"
 
 const OptionButton = styled.button<{ isSelected?: boolean; isNotSelectable?: boolean }>`
 	padding: 8px 12px;

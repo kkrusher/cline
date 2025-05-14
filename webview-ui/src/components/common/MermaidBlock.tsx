@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react"
-import mermaid from "mermaid"
-import { useDebounceEffect } from "@/utils/useDebounceEffect"
-import styled from "styled-components"
-import { FileServiceClient } from "@/services/grpc-client"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { FileServiceClient } from "@webview-ui/services/grpc-client"
+import { useDebounceEffect } from "@webview-ui/utils/useDebounceEffect"
+import mermaid from "mermaid"
+import { useEffect, useRef, useState } from "react"
+import styled from "styled-components"
 
 const MERMAID_THEME = {
 	background: "#1e1e1e", // VS Code dark theme background

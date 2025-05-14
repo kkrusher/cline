@@ -1,7 +1,6 @@
-import { McpServer } from "@shared/mcp"
-import { DEFAULT_MCP_TIMEOUT_SECONDS } from "@shared/mcp"
-import { useState, useCallback, useEffect } from "react"
-import { vscode } from "@/utils/vscode"
+import { DEFAULT_MCP_TIMEOUT_SECONDS, McpServer } from "@shared/mcp"
+import { convertProtoMcpServersToMcpServers } from "@shared/proto-conversions/mcp/mcp-server-conversion"
+import { McpServers, UpdateMcpTimeoutRequest } from "@shared/proto/mcp"
 import {
 	VSCodeButton,
 	VSCodeCheckbox,
@@ -11,14 +10,14 @@ import {
 	VSCodePanelTab,
 	VSCodePanelView,
 } from "@vscode/webview-ui-toolkit/react"
-import { getMcpServerDisplayName } from "@/utils/mcp"
-import DangerButton from "@/components/common/DangerButton"
-import McpToolRow from "./McpToolRow"
+import DangerButton from "@webview-ui/components/common/DangerButton"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { McpServiceClient } from "@webview-ui/services/grpc-client"
+import { getMcpServerDisplayName } from "@webview-ui/utils/mcp"
+import { vscode } from "@webview-ui/utils/vscode"
+import { useCallback, useState } from "react"
 import McpResourceRow from "./McpResourceRow"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { McpServiceClient } from "@/services/grpc-client"
-import { convertProtoMcpServersToMcpServers } from "@shared/proto-conversions/mcp/mcp-server-conversion"
-import { McpServers, UpdateMcpTimeoutRequest } from "@shared/proto/mcp"
+import McpToolRow from "./McpToolRow"
 // constant JSX.Elements
 const TimeoutOptions = [
 	{ value: "30", label: "30 seconds" },

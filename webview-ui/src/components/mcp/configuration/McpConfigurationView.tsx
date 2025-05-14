@@ -1,12 +1,12 @@
+import { McpViewTab } from "@shared/mcp"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { vscode } from "@webview-ui/utils/vscode"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { vscode } from "@/utils/vscode"
 import AddRemoteServerForm from "./tabs/add-server/AddRemoteServerForm"
-import McpMarketplaceView from "./tabs/marketplace/McpMarketplaceView"
 import InstalledServersView from "./tabs/installed/InstalledServersView"
-import { McpViewTab } from "@shared/mcp"
+import McpMarketplaceView from "./tabs/marketplace/McpMarketplaceView"
 
 type McpViewProps = {
 	onDone: () => void

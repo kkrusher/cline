@@ -1,7 +1,6 @@
-import React, { useState, useRef, useLayoutEffect, memo } from "react"
+import { FileServiceClient } from "@webview-ui/services/grpc-client"
+import React, { memo, useLayoutEffect, useRef, useState } from "react"
 import { useWindowSize } from "react-use"
-import { FileServiceClient } from "@/services/grpc-client"
-import { vscode } from "@/utils/vscode"
 
 interface ThumbnailsProps {
 	images: string[]

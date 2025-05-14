@@ -1,9 +1,7 @@
-import { VSCodeBadge, VSCodeProgressRing, VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeBadge, VSCodeButton, VSCodeProgressRing } from "@vscode/webview-ui-toolkit/react"
 import deepEqual from "fast-deep-equal"
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState, MouseEvent } from "react"
+import React, { memo, MouseEvent, useCallback, useEffect, useMemo, useRef, useState } from "react"
 
-import { useEvent, useSize } from "react-use"
-import styled from "styled-components"
 import {
 	ClineApiReqInfo,
 	ClineAskQuestion,
@@ -15,11 +13,28 @@ import {
 	ExtensionMessage,
 } from "@shared/ExtensionMessage"
 import { COMMAND_OUTPUT_STRING, COMMAND_REQ_APP_STRING } from "@shared/combineCommandSequences"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { findMatchingResourceOrTemplate, getMcpServerDisplayName } from "@/utils/mcp"
-import { vscode } from "@/utils/vscode"
-import { FileServiceClient } from "@/services/grpc-client"
-import { CheckmarkControl } from "@/components/common/CheckmarkControl"
+import CreditLimitError from "@webview-ui/components/chat/CreditLimitError"
+import { OptionsButtons } from "@webview-ui/components/chat/OptionsButtons"
+import TaskFeedbackButtons from "@webview-ui/components/chat/TaskFeedbackButtons"
+import { CheckmarkControl } from "@webview-ui/components/common/CheckmarkControl"
+import CodeBlock, { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import MarkdownBlock from "@webview-ui/components/common/MarkdownBlock"
+import SuccessButton from "@webview-ui/components/common/SuccessButton"
+import McpResponseDisplay from "@webview-ui/components/mcp/chat-display/McpResponseDisplay"
+import McpResourceRow from "@webview-ui/components/mcp/configuration/tabs/installed/server-row/McpResourceRow"
+import McpToolRow from "@webview-ui/components/mcp/configuration/tabs/installed/server-row/McpToolRow"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { FileServiceClient } from "@webview-ui/services/grpc-client"
+import { findMatchingResourceOrTemplate, getMcpServerDisplayName } from "@webview-ui/utils/mcp"
+import { vscode } from "@webview-ui/utils/vscode"
+import { useEvent, useSize } from "react-use"
+import styled from "styled-components"
+import { CheckpointControls } from "../common/CheckpointControls"
+import CodeAccordian, { cleanPathPrefix } from "../common/CodeAccordian"
+import NewTaskPreview from "./NewTaskPreview"
+import QuoteButton from "./QuoteButton"
+import ReportBugPreview from "./ReportBugPreview"
+import UserMessage from "./UserMessage"
 
 interface CopyButtonProps {
 	textToCopy: string | undefined
@@ -76,23 +91,6 @@ const WithCopyButton = React.forwardRef<HTMLDivElement, WithCopyButtonProps>(
 		)
 	},
 )
-import { CheckpointControls, CheckpointOverlay } from "../common/CheckpointControls"
-import CodeAccordian, { cleanPathPrefix } from "../common/CodeAccordian"
-import CodeBlock, { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import MarkdownBlock from "@/components/common/MarkdownBlock"
-import Thumbnails from "@/components/common/Thumbnails"
-import McpToolRow from "@/components/mcp/configuration/tabs/installed/server-row/McpToolRow"
-import McpResponseDisplay from "@/components/mcp/chat-display/McpResponseDisplay"
-import CreditLimitError from "@/components/chat/CreditLimitError"
-import { OptionsButtons } from "@/components/chat/OptionsButtons"
-import { highlightText } from "./TaskHeader"
-import SuccessButton from "@/components/common/SuccessButton"
-import TaskFeedbackButtons from "@/components/chat/TaskFeedbackButtons"
-import NewTaskPreview from "./NewTaskPreview"
-import ReportBugPreview from "./ReportBugPreview"
-import McpResourceRow from "@/components/mcp/configuration/tabs/installed/server-row/McpResourceRow"
-import UserMessage from "./UserMessage"
-import QuoteButton from "./QuoteButton"
 
 const ChatRowContainer = styled.div`
 	padding: 10px 6px 10px 15px;

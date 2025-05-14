@@ -1,15 +1,15 @@
-import React, { memo, useEffect, useRef, useState } from "react"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import MermaidBlock from "@webview-ui/components/common/MermaidBlock"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
 import type { ComponentProps } from "react"
+import React, { memo, useEffect, useRef, useState } from "react"
 import { useRemark } from "react-remark"
 import rehypeHighlight, { Options } from "rehype-highlight"
 import rehypeKatex from "rehype-katex"
 import remarkMath from "remark-math"
 import styled from "styled-components"
-import { visit } from "unist-util-visit"
 import type { Node } from "unist"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import MermaidBlock from "@/components/common/MermaidBlock"
+import { visit } from "unist-util-visit"
 
 interface MarkdownBlockProps {
 	markdown?: string

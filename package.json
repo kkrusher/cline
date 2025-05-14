@@ -45,266 +45,21 @@
 	"main": "./dist/extension.js",
 	"contributes": {
 		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "claude-dev-ActivityBar",
-					"title": "Cline",
-					"icon": "assets/icons/icon.svg"
-				}
-			]
+			"activitybar": []
 		},
-		"views": {
-			"claude-dev-ActivityBar": [
-				{
-					"type": "webview",
-					"id": "claude-dev.SidebarProvider",
-					"name": ""
-				}
-			]
-		},
-		"commands": [
-			{
-				"command": "cline.plusButtonClicked",
-				"title": "New Task",
-				"icon": "$(add)"
-			},
-			{
-				"command": "cline.mcpButtonClicked",
-				"title": "MCP Servers",
-				"icon": "$(server)"
-			},
-			{
-				"command": "cline.historyButtonClicked",
-				"title": "History",
-				"icon": "$(history)"
-			},
-			{
-				"command": "cline.popoutButtonClicked",
-				"title": "Open in Editor",
-				"icon": "$(link-external)"
-			},
-			{
-				"command": "cline.accountButtonClicked",
-				"title": "Account",
-				"icon": "$(account)"
-			},
-			{
-				"command": "cline.settingsButtonClicked",
-				"title": "Settings",
-				"icon": "$(settings-gear)"
-			},
-			{
-				"command": "cline.openInNewTab",
-				"title": "Open In New Tab",
-				"category": "Cline"
-			},
-			{
-				"command": "cline.dev.createTestTasks",
-				"title": "Create Test Tasks",
-				"category": "Cline",
-				"when": "cline.isDevMode"
-			},
-			{
-				"command": "cline.addToChat",
-				"title": "Add to Cline",
-				"category": "Cline"
-			},
-			{
-				"command": "cline.addTerminalOutputToChat",
-				"title": "Add to Cline",
-				"category": "Cline"
-			},
-			{
-				"command": "cline.focusChatInput",
-				"title": "Jump to Chat Input",
-				"category": "Cline"
-			},
-			{
-				"command": "cline.generateGitCommitMessage",
-				"title": "Generate Commit Message with Cline",
-				"category": "Cline",
-				"icon": "$(robot)"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "cline.addToChat",
-				"key": "cmd+'",
-				"mac": "cmd+'",
-				"win": "ctrl+'",
-				"linux": "ctrl+'",
-				"when": "editorHasSelection"
-			},
-			{
-				"command": "cline.generateGitCommitMessage",
-				"when": "scmProvider == git"
-			}
-		],
+		"views": {},
+		"commands": [],
+		"keybindings": [],
 		"menus": {
-			"view/title": [
-				{
-					"command": "cline.plusButtonClicked",
-					"group": "navigation@1",
-					"when": "view == claude-dev.SidebarProvider"
-				},
-				{
-					"command": "cline.mcpButtonClicked",
-					"group": "navigation@2",
-					"when": "view == claude-dev.SidebarProvider"
-				},
-				{
-					"command": "cline.historyButtonClicked",
-					"group": "navigation@3",
-					"when": "view == claude-dev.SidebarProvider"
-				},
-				{
-					"command": "cline.popoutButtonClicked",
-					"group": "navigation@4",
-					"when": "view == claude-dev.SidebarProvider"
-				},
-				{
-					"command": "cline.accountButtonClicked",
-					"group": "navigation@5",
-					"when": "view == claude-dev.SidebarProvider"
-				},
-				{
-					"command": "cline.settingsButtonClicked",
-					"group": "navigation@6",
-					"when": "view == claude-dev.SidebarProvider"
-				}
-			],
-			"editor/title": [
-				{
-					"command": "cline.plusButtonClicked",
-					"group": "navigation@1",
-					"when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-				},
-				{
-					"command": "cline.mcpButtonClicked",
-					"group": "navigation@2",
-					"when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-				},
-				{
-					"command": "cline.historyButtonClicked",
-					"group": "navigation@3",
-					"when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-				},
-				{
-					"command": "cline.popoutButtonClicked",
-					"group": "navigation@4",
-					"when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-				},
-				{
-					"command": "cline.accountButtonClicked",
-					"group": "navigation@5",
-					"when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-				},
-				{
-					"command": "cline.settingsButtonClicked",
-					"group": "navigation@6",
-					"when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-				}
-			],
-			"editor/context": [
-				{
-					"command": "cline.addToChat",
-					"group": "navigation",
-					"when": "editorHasSelection"
-				}
-			],
-			"terminal/context": [
-				{
-					"command": "cline.addTerminalOutputToChat",
-					"group": "navigation"
-				}
-			],
-			"scm/title": [
-				{
-					"command": "cline.generateGitCommitMessage",
-					"group": "navigation",
-					"when": "scmProvider == git"
-				}
-			],
-			"commandPalette": [
-				{
-					"command": "cline.generateGitCommitMessage",
-					"when": "scmProvider == git"
-				}
-			]
+			"view/title": [],
+			"editor/title": [],
+			"editor/context": [],
+			"terminal/context": [],
+			"commandPalette": []
 		},
 		"configuration": {
 			"title": "Cline",
-			"properties": {
-				"cline.vsCodeLmModelSelector": {
-					"type": "object",
-					"properties": {
-						"vendor": {
-							"type": "string",
-							"description": "The vendor of the language model (e.g. copilot)"
-						},
-						"family": {
-							"type": "string",
-							"description": "The family of the language model (e.g. gpt-4)"
-						}
-					},
-					"description": "Settings for VSCode Language Model API"
-				},
-				"cline.enableCheckpoints": {
-					"type": "boolean",
-					"default": true,
-					"description": "Enables extension to save checkpoints of workspace throughout the task. Uses git under the hood which may not work well with large workspaces."
-				},
-				"cline.disableBrowserTool": {
-					"type": "boolean",
-					"default": false,
-					"description": "Disables extension from spawning browser session."
-				},
-				"cline.modelSettings.o3Mini.reasoningEffort": {
-					"type": "string",
-					"enum": [
-						"low",
-						"medium",
-						"high"
-					],
-					"default": "medium",
-					"description": "Controls the reasoning effort when using an OpenAI reasoning model. Higher values may result in more thorough but slower responses."
-				},
-				"cline.chromeExecutablePath": {
-					"type": "string",
-					"default": null,
-					"description": "Path to Chrome executable for browser use functionality. If not set, the extension will attempt to find or download it automatically."
-				},
-				"cline.preferredLanguage": {
-					"type": "string",
-					"enum": [
-						"English",
-						"Arabic - العربية",
-						"Portuguese - Português (Brasil)",
-						"Czech - Čeština",
-						"French - Français",
-						"German - Deutsch",
-						"Hindi - हिन्दी",
-						"Hungarian - Magyar",
-						"Italian - Italiano",
-						"Japanese - 日本語",
-						"Korean - 한국어",
-						"Polish - Polski",
-						"Portuguese - Português (Portugal)",
-						"Russian - Русский",
-						"Simplified Chinese - 简体中文",
-						"Spanish - Español",
-						"Traditional Chinese - 繁體中文",
-						"Turkish - Türkçe"
-					],
-					"default": "English",
-					"description": "The language that Cline should use for communication."
-				},
-				"cline.mcpMarketplace.enabled": {
-					"type": "boolean",
-					"default": true,
-					"description": "Controls whether the MCP Marketplace is enabled."
-				}
-			}
+			"properties": {}
 		}
 	},
 	"scripts": {
@@ -387,7 +142,7 @@
 		"@google/genai": "^0.9.0",
 		"@grpc/grpc-js": "^1.9.15",
 		"@mistralai/mistralai": "^1.5.0",
-		"@modelcontextprotocol/sdk": "^1.7.0",
+		"@modelcontextprotocol/sdk": "^1.11.2",
 		"@opentelemetry/api": "^1.4.1",
 		"@opentelemetry/exporter-trace-otlp-http": "^0.39.1",
 		"@opentelemetry/resources": "^1.30.1",

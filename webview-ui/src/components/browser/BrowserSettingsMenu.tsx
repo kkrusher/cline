@@ -1,9 +1,8 @@
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { vscode } from "@webview-ui/utils/vscode"
 import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { vscode } from "@/utils/vscode"
-import { CODE_BLOCK_BG_COLOR } from "../common/CodeBlock"
 import { BrowserServiceClient } from "../../services/grpc-client"
 
 interface ConnectionInfo {

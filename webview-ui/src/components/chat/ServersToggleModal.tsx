@@ -1,12 +1,12 @@
-import React, { useRef, useState, useEffect } from "react"
-import { useClickAway, useWindowSize } from "react-use"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { useNavigator } from "@/hooks/useNavigator"
-import { CODE_BLOCK_BG_COLOR } from "@/components/common/CodeBlock"
-import ServersToggleList from "@/components/mcp/configuration/tabs/installed/ServersToggleList"
-import { vscode } from "@/utils/vscode"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import Tooltip from "@/components/common/Tooltip"
+import { CODE_BLOCK_BG_COLOR } from "@webview-ui/components/common/CodeBlock"
+import Tooltip from "@webview-ui/components/common/Tooltip"
+import ServersToggleList from "@webview-ui/components/mcp/configuration/tabs/installed/ServersToggleList"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { useNavigator } from "@webview-ui/hooks/useNavigator"
+import { vscode } from "@webview-ui/utils/vscode"
+import React, { useEffect, useRef, useState } from "react"
+import { useClickAway, useWindowSize } from "react-use"
 
 const ServersToggleModal: React.FC = () => {
 	const { mcpServers } = useExtensionState()

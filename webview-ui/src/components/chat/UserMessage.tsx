@@ -1,10 +1,10 @@
-import React, { useState, useRef, forwardRef, useCallback } from "react"
-import Thumbnails from "@/components/common/Thumbnails"
-import { highlightText } from "./TaskHeader"
-import DynamicTextArea from "react-textarea-autosize"
-import { useExtensionState } from "@/context/ExtensionStateContext"
-import { CheckpointsServiceClient } from "@/services/grpc-client"
 import { ClineCheckpointRestore } from "@shared/WebviewMessage"
+import Thumbnails from "@webview-ui/components/common/Thumbnails"
+import { useExtensionState } from "@webview-ui/context/ExtensionStateContext"
+import { CheckpointsServiceClient } from "@webview-ui/services/grpc-client"
+import React, { forwardRef, useRef, useState } from "react"
+import DynamicTextArea from "react-textarea-autosize"
+import { highlightText } from "./TaskHeader"
 
 interface UserMessageProps {
 	text?: string
