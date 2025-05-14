@@ -445,6 +445,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	createClineAPI(outputChannel, sidebarWebview.controller)
+	console.log("Cline extension activated")
 }
 
 // TODO: Find a solution for automatically removing DEV related content from production builds.
