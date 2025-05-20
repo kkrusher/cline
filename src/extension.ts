@@ -13,7 +13,7 @@ import { Logger } from "./services/logging/Logger"
 import { posthogClientProvider } from "./services/posthog/PostHogClientProvider"
 import { telemetryService } from "./services/posthog/telemetry/TelemetryService"
 import { cleanupTestMode, initializeTestMode } from "./services/test/TestMode"
-import "./utils/path" // necessary to have access to String.prototype.toPosix
+import "./utils/path"; // necessary to have access to String.prototype.toPosix
 
 /*
 Built using https://github.com/microsoft/vscode-webview-ui-toolkit
@@ -85,7 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	const openClineInNewTab = async () => {
-		Logger.log("Opening Cline in new tab")
+		Logger.log("·[wzj] Opening Cline in new tab")
 		// (this example uses webviewProvider activation event which is necessary to deserialize cached webview, but since we use retainContextWhenHidden, we don't need to use that event)
 		// https://github.com/microsoft/vscode-extension-samples/blob/main/webview-sample/src/extension.ts
 		const tabWebview = new WebviewProvider(context, outputChannel)
@@ -117,9 +117,20 @@ export function activate(context: vscode.ExtensionContext) {
 		await vscode.commands.executeCommand("workbench.action.lockEditorGroup")
 	}
 
+	console.log("[wzj] Registering openClineInNewTab function")
 	context.subscriptions.push(vscode.commands.registerCommand("cline.popoutButtonClicked", openClineInNewTab))
 	context.subscriptions.push(vscode.commands.registerCommand("cline.openInNewTab", openClineInNewTab))
+	const openNewTab = async () => {
+		try{
+		   const result = await vscode.commands.executeCommand('cline.openInNewTab');
+		   console.log('[wzj] Command executed, result:', result);
+		}
+		catch(err){
+		   console.error('[wzj] Error executing command:', err);
+		}
+	 }
 
+	 openNewTab();
 	context.subscriptions.push(
 		vscode.commands.registerCommand("cline.settingsButtonClicked", (webview: any) => {
 			WebviewProvider.getAllInstances().forEach((instance) => {
